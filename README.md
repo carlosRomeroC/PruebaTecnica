@@ -1,8 +1,6 @@
-Acerca de
+
 Elaborado por:Carlos Romero
 
-link demo - test(https://pages.github.com/)
+link demo - test(donporfirio.x10.mx)
 Don Porfirio
-License
-The Laravel framework is open-sourced software licensed under the MIT license.
 para ingresar al sistema utiliza: user: admin@prueba.com pass: password
