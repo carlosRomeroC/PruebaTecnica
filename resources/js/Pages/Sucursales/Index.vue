@@ -24,7 +24,7 @@ router.delete(route('panel.sucursales.destroy',{ 'sucursale':item.id }));
 }
 function edit(item: any) {
 
-    router.put(route('panel.sucursales.update', { 'sucursale': item.id }));
+    router.get(route('panel.sucursales.edit', { 'sucursale': item.id }));
 }
 </script>
 <template>

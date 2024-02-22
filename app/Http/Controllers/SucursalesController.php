@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SucursalResource;
 use App\Models\Sucursales;
 use App\Models\Domicilio;
 use App\Models\Mesas;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SucursalesController extends Controller
 {
@@ -82,9 +84,10 @@ class SucursalesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sucursales $sucursales)
-    {
+    public function edit(Sucursales $sucursale)
+    {   
         
+        return Inertia::render('Sucursales/Edit', ['item'=>new SucursalResource($sucursale)]);   
     }
 
     /**
@@ -93,8 +96,8 @@ class SucursalesController extends Controller
     public function update(Sucursales $sucursale)
     {
         $sucursale->domicilio;
-        dd($sucursale);
-        //return Inertia::render('Sucursales/Edit',$sucursale);
+        //dd($sucursale);
+        return Inertia::render('Sucursales/Edit',$sucursale);
     }
 
     /**
@@ -104,6 +107,9 @@ class SucursalesController extends Controller
     {
         $sucursale->delete();
         return redirect()->route("panel.sucursales.index");
-
+    }
+    public function dashboard(){
+        $sucursales=Auth::user()->sucursales()->with('mesas')->first();
+        return Inertia::render('Dashboard', ['sucursales'=>$sucursales]);
     }
 }

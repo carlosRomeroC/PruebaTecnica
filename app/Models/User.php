@@ -53,4 +53,7 @@ class User extends Authenticatable
     {
         return $this->morphOne(Domicilio::class, 'model')->withDefault();
     }
+    public function sucursales(){
+        return $this->belongsTo(Sucursales::class,'sucursales_id', 'id');
+    }
 }

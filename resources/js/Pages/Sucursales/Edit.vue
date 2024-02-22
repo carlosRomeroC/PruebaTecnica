@@ -9,20 +9,26 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { route } from 'momentum-trail';
 
 const props = defineProps({
-    item: Object    
+    item: Object   
 })
 const form = useForm({
     nombre: props.item.nombre,
-    email: props.item.nombre,
-    telefono: props.item.nombre,
-    mesas: props.item.nombre,
-    colonia: props.item.nombre,
-    calle: props.item.nombre,
-    numero: props.item.nombre,
-    estado: props.item.nombre,
-    pais: props.item.nombre,
-    cp: props.item.nombre
-    
+    email: props.item.email,
+    telefono: props.item.telefono,
+    mesas: props.item.mesasCount,
+    // colonia: props.item.domicilio.colonia,
+    // calle: props.item.domicilio.calle,
+    // numero: props.item.domicilio.numero,
+    // estado: props.item.domicilio.estado,
+    // pais: props.item.domicilio.pais,
+    // cp: props.item.domicilio.cp
+    colonia: '',
+    calle: '',
+    numero: '',
+    estado: '',
+    pais: '',
+    cp: ''
+
 
 });
 
@@ -53,7 +59,7 @@ const submit = () => {
                         :error-messages="form.errors.nombre" />
             </v-col>  
              <v-col cols="12" md="4"> 
-            <v-text-field id="email" type="email" label="email" v-model="form.email" required density="compact"
+            <v-text-field id="email" type="email" label="email" v-model="form.email" v-value="form.email" required density="compact"
                             :error-messages="form.errors.email" />
              </v-col>
             <!-- telefono -->
